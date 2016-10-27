@@ -26,6 +26,15 @@ return new ICadGenerator(){
 	double nutDimeMeasurment = nutMeasurments.get("width")
 	double nutThickMeasurment = nutMeasurments.get("height")
 	DHParameterKinematics neck=null;
+
+	private CSG toZMin(CSG incoming,CSG target){
+		return incoming.transformed(new Transform().translateZ(-target.getBounds().getMin().z));
+	}
+
+	private CSG toZMin(CSG incoming){
+		return toZMin(incoming,incoming);
+	}
+	
 	/**
 	 * Gets the all dh chains.
 	 *
@@ -168,10 +177,6 @@ return new ICadGenerator(){
 		
 		
 		return csg;
-	}
-
-	private CSG toZMin(CSG incoming,CSG target){
-		return incoming.transformed(new Transform().translateZ(-target.getBounds().getMin().z));
 	}
 	
 	private CSG reverseDHValues(CSG incoming,DHLink dh ){
