@@ -41,6 +41,8 @@ class HeadOnNeck implements ICadGenerator, IParameterChanged{
 		DHLink dh = dhLinks.get(linkIndex)
 		//If you want you can add things here
 		//allCad.add(myCSG);
+
+		/*
 		if(linkIndex ==dhLinks.size()-1){
 			println "Found neck limb" 
 			headDiameter.setMM(180)
@@ -70,6 +72,7 @@ class HeadOnNeck implements ICadGenerator, IParameterChanged{
 				}
 			}
 		}
+		*/
 		return allCad;
 	}
 
