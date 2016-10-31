@@ -44,7 +44,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 			println "Found foot limb" 
 			CSG foot =new RoundedCube(10,10,thickness.getMM()).cornerRadius(2.5).toCSG() // a one line Cylinder
 			
-			CSG physLink = new Cube(25, dh.getR(), 25).toCSG().moveYMin()
+			CSG physLink = new Cube(25, dh.getR(), 25).toCSG().toYMin()
 			physLink = defaultCadGen.moveDHValues(physLink,dh)
 			defaultCadGen.add(allCad,physLink,dh.getListener())
 			print "yo"
