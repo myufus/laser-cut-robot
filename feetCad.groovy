@@ -45,7 +45,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 			CSG foot =new RoundedCube(10,10,thickness.getMM()).cornerRadius(2.5).toCSG() // a one line Cylinder
 			
 			CSG physLink = new Cube(25, 25, 25).toCSG()
-			defaultCadGen.add(csg,moveDHValues(physLink,dh),dh.getListener())
+			defaultCadGen.add(allCad,moveDHValues(physLink,dh),dh.getListener())
 			
 			defaultCadGen.add(allCad,foot,dh.getListener())
 		}
