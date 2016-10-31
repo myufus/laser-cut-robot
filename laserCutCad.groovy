@@ -165,11 +165,9 @@ return new ICadGenerator(){
 		}
 		add(csg,moveDHValues(horn,dh),dh.getListener())
 
-		//CSG physLink = new Cube(25, 25, 25).toCSG()
-		//add(csg,moveDHValues(physLink,dh),dh.getListener())
+		CSG physLink = new Cube(25, 25, 25).toCSG()
+		add(csg,moveDHValues(physLink,dh),dh.getListener())
 
-		double ServoKeepawayRad = Math.sqrt((servoReference.getMinX()*servoReference.getMinX())+(servoReference.getMaxY()*servoReference.getMaxY()))+1
-		CSG upperLink = toZMin(new Cylinder(ServoKeepawayRad,10,(int)8).toCSG())
 		add(csg, moveDHValues(horn, dh), dh.getListener())
 		if(neck ==sourceLimb ){
 			
