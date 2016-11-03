@@ -163,12 +163,8 @@ return new ICadGenerator(){
 			}
 			
 		}
-		add(csg,moveDHValues(horn,dh),dh.getListener())
-
 		
-		CSG physLink = new Cube(dh.getR(), 10, 10).toCSG().toXMax().difference(horn)
-		add(csg,physLink,dh.getListener())
-		print "yo"
+		add(csg,moveDHValues(horn,dh),dh.getListener())
 		
 		if(neck ==sourceLimb ){
 			
