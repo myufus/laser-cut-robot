@@ -63,7 +63,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 			defaultCadGen.add(allCad,foot,dh.getListener())
 		}
 
-		CSG physLink = new Cube(dh.getR(), 5, 10).toCSG().toXMax().difference(defaultCadGen.moveDHValues(horn,dh))
+		CSG physLink = new Cube(dh.getR(), thickness.getMM() * 4, 5).toCSG().toXMax().toZMin().difference(defaultCadGen.moveDHValues(horn,dh)).difference(horn)
 		defaultCadGen.add(allCad,physLink,dh.getListener())
 			
 		return allCad;
