@@ -40,17 +40,32 @@ class Feet implements ICadGenerator, IParameterChanged{
 		DHLink dh = dhLinks.get(linkIndex)
 		//If you want you can add things here
 		//allCad.add(myCSG);
+
+		LinkConfiguration conf = d.getLinkConfiguration(linkIndex);
+
+		//Creating the horn
+		HashMap<String, Object> shaftmap = Vitamins.getConfiguration(conf.getShaftType(),conf.getShaftSize())
+		double hornOffset = 	shaftmap.get("hornThickness")	
+		
+		// creating the servo
+		CSG servoReference=   Vitamins.get(conf.getElectroMechanicalType(),conf.getElectroMechanicalSize())
+		.transformed(new Transform().rotZ(90))
+		
+		double servoTop = servoReference.getMaxZ()
+		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize())	
+		
+		servoReference=servoReference
+			.movez(-servoTop)
+		
 		if(linkIndex ==dhLinks.size()-1){
 			println "Found foot limb" 
 			CSG foot =new RoundedCube(10,10,thickness.getMM()).cornerRadius(2.5).toCSG() // a one line Cylinder
-
-			
-			CSG physLink = new Cube(25, 25, 25).toCSG()
-			defaultCadGen.add(allCad,physLink,dh.getListener())
-			print "yo"
-			
 			defaultCadGen.add(allCad,foot,dh.getListener())
 		}
+
+		CSG physLink = new Cube(dh.getR(), 5, 10).toCSG().toXMax().difference(defaultCadGen.moveDHValues(horn,dh))
+		defaultCadGen.add(allCad,physLink,dh.getListener())
+			
 		return allCad;
 	}
 	@Override 
