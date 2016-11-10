@@ -141,8 +141,7 @@ return new ICadGenerator(){
 		double hornOffset = 	shaftmap.get("hornThickness")	
 		
 		// creating the servo
-		CSG servoReference=   Vitamins.get(conf.getElectroMechanicalType(),conf.getElectroMechanicalSize())
-		.transformed(new Transform().rotZ(90))
+		CSG servoReference=   Vitamins.get(conf.getElectroMechanicalType(),conf.getElectroMechanicalSize()).transformed(new Transform().rotZ(90))
 		
 		double servoTop = servoReference.getMaxZ()
 		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize())	
@@ -163,6 +162,7 @@ return new ICadGenerator(){
 			}
 			
 		}
+		
 		
 		//add(csg,moveDHValues(horn,dh),dh.getListener())
 		
