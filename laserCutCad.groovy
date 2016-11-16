@@ -150,7 +150,7 @@ return new ICadGenerator(){
 			.movez(-servoTop)
 
 		
-		
+		/*
 		if(linkIndex==0){
 			add(csg,servoReference.clone(),sourceLimb.getRootListener())
 			add(csg,servoReference,dh.getListener())
@@ -164,8 +164,8 @@ return new ICadGenerator(){
 		}
 		
 		
-		//add(csg,moveDHValues(horn,dh),dh.getListener())
-		
+		add(csg,moveDHValues(horn,dh),dh.getListener())
+		*/
 		if(neck ==sourceLimb ){
 			
 		}
