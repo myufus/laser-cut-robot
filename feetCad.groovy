@@ -63,11 +63,12 @@ class Feet implements ICadGenerator, IParameterChanged{
 			defaultCadGen.add(allCad,foot,dh.getListener())
 		}
 
-		CSG physLink = new Cube(7.5, dh.getR(), 7.5).toCSG().toYMin()
-		physLink = defaultCadGen.moveDHValues(physLink,dh)
-		physLink = physLink.difference(defaultCadGen.moveDHValues(horn,dh)).difference(defaultCadGen.moveDHValues(servoReference,dh))
-		physLink = physLink.difference(horn).difference(horn.rotz((conf.getUpperLimit() - conf.getLowerLimit())/2)).difference(horn.rotz((conf.getUpperLimit() - conf.getLowerLimit())/-2))
-		defaultCadGen.add(allCad,physLink,dh.getListener())
+		CSG hornCutout = horn.union(horn.scaley(0.5).movez(-3))
+
+		CSG connector = new Cube(7.5, 40, 7.5).toCSG().toYMin().movey(-10)
+		connector = defaultCadGen.moveDHValues(connector,dh)
+		connector = connector.difference(defaultCadGen.moveDHValues(hornCutout, dh))
+		defaultCadGen.add(allCad,connector,dh.getListener())
 			
 		return allCad;
 	}
